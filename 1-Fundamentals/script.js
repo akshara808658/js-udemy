@@ -149,3 +149,32 @@ console.log(`Just a regular string...`);
 console.log(`String with \n\multiple \n\lines`);
 
 //if /else statements------------------------------
+const ageOfPerson = 15;
+const isOldEnough = ageOfPerson >= 18;
+
+if(isOldEnough){
+  console.log('Sarah can start driving license ');
+}else{
+  const yearLeft = 18 - ageOfPerson;
+  console.log(`Sarah is too young. Wait another ${yearLeft} years`); 
+}
+
+let century;
+const birthYear1 = 1998
+if(birthYear <= 2000){
+  century = 20;
+} else{
+  century = 21
+}
+console.log(century);
+
+//Type Convention And Corecion
+const inputYear = '1991'
+console.log(Number(inputYear),inputYear); //1991 "1991"
+console.log(inputYear + 18);
+
+console.log(Number('Jonas'));
+console.log(typeof NaN);
+console.log(String(12),23);
+
+
