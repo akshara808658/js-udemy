@@ -177,4 +177,7 @@ console.log(Number('Jonas'));
 console.log(typeof NaN);
 console.log(String(12),23);
 
+//type corection
+console.log(`I am ` + 23 + `Years old`);
+
 
