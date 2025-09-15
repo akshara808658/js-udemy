@@ -30,3 +30,9 @@ if(scoreDolphins > scoreKolas){
 }else{
   console.log("Both win the trophy");
 }
+
+//   CHALLENGE4
+const bill = 200;
+
+const tip = bill > 50 && bill < 300 ? bill * 0.15 : bill * 0.2;
+console.log(`The bill was ${bill}, the tip was ${tip}, the total bill ${bill+ tip}`);

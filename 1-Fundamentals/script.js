@@ -182,6 +182,8 @@ console.log(`I am ` + 23 + ` Years old`);
 console.log('23'-'10'-3);
 console.log('23'/'2');
 
+//type conversion is done manually by the programmer, while corecion happens automatically
+
 let n = '1' + 1; //'11' bcz if we adding bu string this not add like this 1 + 1= 2
 n = n-1;
 console.log(n);
@@ -252,3 +254,91 @@ if(hasDriversLicence && hasGoodVision && !isTired){
 }else{
   console.log("Someone else should drive...");
 }
+
+//switch statement
+const day = 'saturday'
+
+switch(day){
+  case 'monday': //day === 'monday'
+    console.log("Plan course structure");
+    console.log("Go to coding meetup");
+    break;
+  case 'tuesday' :
+    console.log("Prepare theory videos");
+    break;
+  case 'Wednesday' :
+  case 'thursday' :
+    console.log("Write code examples");
+    break;
+  case 'friday' :
+    console.log("Record videos");
+    break;
+  case 'saturday':
+  case 'sunday' :
+    console.log("Enjoy the weekend :D");
+    break;
+  default :
+   console.log("Not a valid day");
+}
+
+if(day === 'monday'){
+  console.log("Plan course structure");
+  console.log("Go to coding meetup");
+}else if( day === "tuesday"){
+  console.log("Prepare theory videos");
+}else if(day === "wednesday" || day === "thursday"){
+  console.log("Write code examples"); 
+}else if (day === "friday"){
+  console.log("Record videos");
+}else if ( day === "saturday" || day === "sunday"){
+  console.log("Enjoy the weekend :D");
+}else{
+  console.log("Not a valid day");
+}
+
+//when would using a switch state be more appropriate than if else: when comparing single value against multiple possible values.
+//`${}` - all valid js expression
+
+//statement and expression
+/*expression
+// 3 * 4
+// 1991
+// true && false && !false
+*/
+/*Statements
+if(23 > 18){
+const str = "23 is bigger
+}
+*/
+if(23 > 18){
+  const str = "23 is bigger"
+}
+// console.log(`I'm ${2037-1991} years old ${if(23 > 10){
+//   const str = "23 uis bigger"
+// }}`) // undexpected token
+
+//conditional operators (Ternory)
+const age3 = 3;
+// age3 >= 18 ? console.log("I like to drink wine."): console.log("I like drink water.");
+
+const drink = age >= 18 ? "wine" : "water";
+console.log(drink);
+
+console.log(`I like to drink ${age >= 18 ? "wine" : "water"}`);
+
+//history of js
+/*
+in 1995 very first version it is called mocha 
+in 1996 js has almost nothing to do with java
+copying js from netscape
+in 1997 official std for js
+in 2009 ES5
+in 2015 ES6 the biggest update to the lang */
+
+//how to use modern js today
+/**
+ * During development : simply use laltest google chrome
+ * during prduction: use babel trenspile and polyfill your code (converting back to ES5 to ensure browser compatibility for all users.)
+ * ES5 full supported in all browser, ready to use today
+ * ES6  well supported in all modern browsers, no support in old browsers, most features in production with transpiling and polyfilling
+ */
