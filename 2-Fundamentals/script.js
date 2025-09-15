@@ -239,10 +239,24 @@ const details = {
   friends:['Robert','Peter','Alen'],
   hasDriversLicence:true,
 
-  calcAge: function (){
-    console.log(this);
-    return 2037 - this.birthYear; //this method
+  // calcAge: function (){
+  //   // console.log(this); // full details
+  //   return 2037 - this.birthYear; //this method
+  // }
+  calcAge: function(){
+    this.age = 2037-this.birthYear;
+    return this.age;
+  },
+  getSummary: function(){
+   return `${this.firstName} is a ${this.calcAge()} - years old ${this.job}, and he has a ${this.hasDriversLicence ? "a": "no"} driver's licence.`
   }
 };
 
 console.log(details.calcAge());
+// console.log(details.age());
+// console.log(details.age());
+// console.log(details.age());
+
+//challenge
+//alexa is a 32-years old developer, and he has a driver's licence.
+console.log(details.getSummary());
