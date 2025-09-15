@@ -170,7 +170,7 @@ console.log(century);
 
 //Type Convention And Corecion
 const inputYear = '1991'
-console.log(Number(inputYear),inputYear); //1991 "1991"
+console.log(Number(inputYear),inputYear); //1991 "1991"- number string
 console.log(inputYear + 18);
 
 console.log(Number('Jonas'));
@@ -178,6 +178,77 @@ console.log(typeof NaN);
 console.log(String(12),23);
 
 //type corection
-console.log(`I am ` + 23 + `Years old`);
+console.log(`I am ` + 23 + ` Years old`);
+console.log('23'-'10'-3);
+console.log('23'/'2');
 
+let n = '1' + 1; //'11' bcz if we adding bu string this not add like this 1 + 1= 2
+n = n-1;
+console.log(n);
 
+//truthy and falsy values
+//falsy values: '',undefined,null,NaN
+console.log(Boolean(0));//false
+console.log(Boolean(undefined));//false
+console.log(Boolean('John'));//true
+console.log(Boolean({}));//true
+console.log(Boolean(''));//false
+
+const money = 10;
+if(money){
+  console.log("Dont't spend it all!");
+}else{
+  console.log("You should get a job!");
+}
+
+let height;
+if(height){
+  console.log("YAY! Height is defined");
+}else{
+  console.log("Height is UNDEFINED");
+}
+
+//Equality Operators
+let age1 = 18;
+if(age1 === 18) console.log("You just become an adult :D(strict)");
+
+if(age == 18) console.log("You just became an adult : D(loose)");
+
+// const favourite = Number(prompt("What's favourite number?"));
+// console.log(favourite);
+// console.log(typeof favourite);
+
+// if(favourite === 23){ // '23' == 23 so include Number in prompt
+//   console.log("Cool! 23 is an amazing number!");
+// }else if(favourite === 7){
+//   console.log("7 is also a cool number");
+// }else if(favourite === 9){
+//   console.log("9 is also an cool number");
+// }else {
+//   console.log("Number is not 23 or 7 or 9");
+// }
+// if(favourite !== 23){
+//   console.log("Why not 23?"); 
+// }
+
+//Basic logic :AND, OR, NOT :- AND- both true, OR : altleast one is true
+const hasDriversLicence = true;
+const hasGoodVision = true;
+
+console.log(hasDriversLicence && hasGoodVision);
+console.log(hasDriversLicence || hasGoodVision);
+console.log(!hasDriversLicence);
+
+// if(hasDriversLicence && hasGoodVision){
+//   console.log("Sarah is able to drive!");
+// }else{
+//   console.log("Someone else should drive...");
+// }
+
+const isTired = false ;
+console.log(hasDriversLicence && hasGoodVision && isTired && !isTired);
+if(hasDriversLicence && hasGoodVision && !isTired){
+  console.log("Sarah is able to drive!");
+}else{
+  console.log("Someone else should drive...");
+}
