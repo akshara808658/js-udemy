@@ -83,4 +83,27 @@ if( mark.bmi > john.bmi) {
   console.log(`${john.fullName}'s BMI ${john.bmi} is higher than ${mark.fullName} 's ${mark.bmi}!`);
 }
 
-/**/
+//  CHALLENGES4
+const createBills = [22,295,176,440,37,105,10,1100,86,52];
+const createTips =[];
+const createTotal=[];
+
+const calcTips = bill => (bill >= 50 && bill < 300)? bill*0.15 : bill*0.2
+
+for(let i=0; i< createBills.length; i++){
+  createTips.push(calcTips(createBills[i]))
+  createTotal.push(createTips[i]+createBills[i])
+}
+console.log(createTips);
+console.log(createTotal);
+
+function calcAverages(arr){
+  let sum =0;
+  for(let i =0; i< arr.length; i++){
+    sum += arr[i]
+  }
+  return sum/arr.length
+}
+console.log(calcAverages(createBills));
+console.log(calcAverages(createTotal));
+
