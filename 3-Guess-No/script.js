@@ -219,7 +219,8 @@ document.querySelector('.again').addEventListener('click',function(){
   displayMessage('Start guessing...');
   document.querySelector('.number').textContent = '?'
   document.querySelector('.score').textContent = score;
-  document.querySelector('.score').textContent = '';
+  document.querySelector('.guess').textContent = '';
   document.querySelector('body').style.backgroundColor = ' #222';
   document.querySelector('.number').style.width = '15rem';
 })
+
