@@ -145,4 +145,24 @@ if (myNameis === 'Alexa'){
   console.log(x);
 }
 
-//what TDZ: accessing variables before declaration is bad practice and should be avoided.
+//why TDZ: accessing variables before declaration is bad practice and should be avoided.
+//why hoisting : using fns before actual declaration
+//var hoisting just a byproduct 
+
+//Hoisting: hoisting is js default behaviour of moving declarations to the their scope ,
+//only declarations are hoisted not intilizations
+//how to work
+/**
+ * during creation phase of exceution context 
+ * js scans the code and allocates memory for variables and fns 
+ * variables are allocated but handled differently depending on var, let , const 
+ * function hoisting : fn declarations are fully hoisted can be called before they appear in the code.
+ * sayHi();
+ * function sayHi(){
+ * cosole.log("Hello!")}
+ * 
+ * //variable hoisting : hoisted and intilized with undefined.
+ * can be accessed before declaration 
+ * console.log(a);
+ * var a = 3
+ */
