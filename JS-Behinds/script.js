@@ -58,3 +58,91 @@ overlay.addEventListener('click',closeModel) // this closeModel is first-class f
   //arguments object 
 //2-scope chain 
 //3-this keyword // NOT in arrow fns
+
+//place where exceution contexts get stacked on top of each other, to keep track of where we are in the execution 
+
+//Scope and scope chain 
+//scoping : how our program's variables are organized and accessed 
+//lexical scoping : scoping is controlled by placements of functions and blocks in the code;
+//scope : space or environments in which a certain variable is declared 
+
+//3 types scopes : 
+//Global scope : accessible everywhere , outside of any function or block 
+/**
+ * const me = 'Alexa'
+ * const job = 'teacher'
+ * const year = 2004
+ */
+//Functional scope : variable are accessible only inside function NOT outside 
+/**
+ * function calcAge(birthYear){
+ * const now=2037 
+ * const age = now - birthYear 
+ * return age
+ * }
+ * console. log(now);
+ */
+//Block scope: variables are accessible only inside block, however this only applies to let and const variables , functions are also block scoped (only in strick mode )
+/**
+ * if (year >= 1981 && year <= 1996){
+ * const millenial = true
+ * const food = 'Avocado toast '
+ * }
+ * console.log(millenial)
+ */
+
+const myName = 'Jonas'; //Global scope
+
+function first(){ 
+  const age = 30;
+
+  if(age >= 30){    
+    const decide = 3;
+    var millenial = true;
+  }
+  function second(){
+    const job = 'teacher ';
+    console.log(`${myName} is a ${age } old ${job }`);
+  }
+  second();
+}
+first();
+//SCOPE CHAIN VS. CALL STACK
+const a='Alexa'
+first();
+
+function first(){
+  const b = 'Hello!'
+  second();
+
+  function second(){
+    const c = 'Hi';
+    third();
+  }
+}
+function third(){
+  const d = 'Hey!'
+  console.log(d+c+b+a);
+  //ReferenceError
+}
+//in this example in callstack look like, 1-third() d="Hey!", second() c = "Hi!", first() b= "Hello" second = <function>, Global a = "Alexa " first = < function > third = < function ---> variable environment >
+
+//HOISTING IN JS
+//makes some types of variables accessible/ usable in the before they are actually declared. variables lifted to the top their scope.
+//function declarations hoisted yes actual function , block 
+//var variables : yes , undefined , function 
+//let and const variables : no , <unintialized > , TDZ --> Temporal Dead Zone , block
+//function expressions and arrows : depends if using var or let/ const 
+
+//Temporal Dead Zone, let const
+
+const myNameis = 'Alexa'
+if (myNameis === 'Alexa'){
+  console.log(`Alexa is a ${job}`);
+  const age = 2037-1989;
+  console.log(age);
+  const job = 'teacher'
+  console.log(x);
+}
+
+//what TDZ: accessing variables before declaration is bad practice and should be avoided.
