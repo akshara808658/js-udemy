@@ -168,8 +168,8 @@ console.log(i,j,k);
 //OR
 const [p=1,q=1,r=1] = [8];
 console.log(p,q,r);
-*/
-
+*----------------------------------------------------------------/
+/*
 //DESTRUCTURING OF OBJECT
 const restaurent ={
   name: 'Classico Italiano',
@@ -355,6 +355,7 @@ if(restaurent.orderPizza) {
 restaurent.orderPizza && restaurent.orderPizza('mushroom','spinach')
 
 */
+/*
 //Nullish Collescing Operator(??)
 restaurent.numGuests = 0;
 const guests = restaurent.newGuests || 10;
@@ -393,3 +394,163 @@ rest2.owner &&= '<ANOYMOUS>'
 
 console.log(rest1);
 console.log(rest2);
+*/
+/*
+//Looping arrays 
+const restaurent ={
+  name: 'Classico Italiano',
+  location : 'Via Angelo Tavant 23, Firenze, Italy',
+  categories : ['Italian', 'pizzeria', 'vegetarin', 'Organic'],
+  starterMenu :['Focaccia','Bruschetta','Garlic Bread','Caprese Salad'],
+  mainMenu: ['Pizza','Pasta','Risotto'],
+  openingHours: {
+    thu:{
+      open:12,
+      close:22,
+    },
+    fri:{
+      open:11,
+      close:23,
+    },
+    sat:{
+    open:0,//open 24 hours
+    close:22,
+    },
+  },
+
+  order : function(starterIndex,mainIndex){
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]
+  },
+  orderDelivery: function({starterIndex = 1, mainIndex =1, time = '20:00', address}){
+    console.log(`Order recevied ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be deliverd to ${address} at ${time}`);
+  },
+
+  orderPasta: function(ing1,ing2,ing3){
+    console.log(`Here is your declicious pasta with ${ing1},${ing2} and ${ing3}`);
+  },
+
+  orderPizza: function (mainIngredient, ...otherIngredient){
+    console.log(mainIngredient);
+    console.log(otherIngredient);
+  },
+};
+
+//for of loop
+
+const menu = [...restaurent.starterMenu, ...restaurent.mainMenu];
+
+for(const item of menu) console.log(item);
+
+for (const [i,el] of menu.entries()){ // const item of menu
+  // console.log(`${item[0]+1}: ${item[1]}`);
+  console.log(`${i+1}: ${el}`);
+}
+// console.log(...menu.entries());
+
+//Enhanced Object Literals
+
+*/
+//--------------------------------------PRACTISE----------------------------------
+//DISTRUCTURING
+//this is js feature that allows you to extract values from objects or arrays into distinct variables. 
+//usage: REMOVE ADS,array distructuring
+//syntax
+/*
+let {firstName, lastName} = person;
+let [firstName, lastName] = person;
+*/
+
+//object distructuring
+//eg:
+const person = {
+  firstName: 'John',
+  lastName: 'Doe',
+  age:23
+};
+
+//Destructring 
+let {firstName, lastName} = person;
+
+//string destructuring
+let name = 'Alexa';
+
+//Destructuring
+let [a1,a2,a3,a4] = name;
+
+//spread operators:
+/**
+ * allows us to quickly copy all or part of an existing array or object into another array.
+ * spread opertors expands an like an array into more elements.
+ * spread operators(...); ...operator can be used to join arrays. 
+*/
+//eg
+const num1 = [1,2,3];
+const num2 = [4,5,6];
+const numbers = [...num1,...num2];
+console.log(numbers);
+
+//assign first and second items 
+const nums = [1,2,3,4,5,6];
+
+const [one,two,...rest] = nums
+console.log(one,two,rest);
+
+//combine two objects
+const car ={
+  brand: 'Ford',
+  model: 'Mustang',
+  color:'Black'
+}
+const moreCar = {
+  type: 'Car',
+  year: 2021,
+  color:'yellow'
+}
+const newCar = {...car,...moreCar}; // using '{}'
+console.log(newCar);
+//
+const resto = {
+  mainMenu : ['Pizza', 'Biriyani','Mandi','Dosa'],
+  starterMenu: ['Juice', 'Soap', 'shake'],
+  openHours: {
+    thu:{
+      open:12,
+      close:22,
+    },
+    fri:{
+      open:11,
+      close:23,
+    },
+    sat: {
+      open:0,
+      close:24,
+    },
+  },
+orderPizza: function (mainIngredient,...otherIngredient){
+  console.log(mainIngredient);
+  console.log(otherIngredient);
+},
+};
+const [pizza,Biriyani,...other] = [...resto.mainMenu, ...resto.starterMenu]
+console.log(pizza,Biriyani,other);
+
+//for getting weekdays
+const {sat, ...weekdays} = resto.openHours;
+console.log(weekdays);
+
+//fn distructuring
+function add(...n){
+let sum = 0;
+for(let i=0; i< n.length; i++) sum += n[i];
+console.log(sum);
+}
+add(2,4);
+add(4,6,8);
+add(3,6,8,9,6,5);
+
+const x = [1,0,7];
+add(...x);
+
+//order
+resto.orderPizza('mashroom','onion','spanich', 'olivers');
+resto.orderPizza('mushroom');
