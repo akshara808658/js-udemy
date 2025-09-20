@@ -71,4 +71,23 @@ printGoals(...game.score)
 team1 < team2 && console.log('Team 1 is more likely to win');
 team2 < team1 && console.log(('Team 2 is more likely to win'));
 
-//Looping Arrays
+    // CHALLENGE 2
+//Goal 1: Lewandoski
+for(let [i,player] of game.scored.entries())
+  console.log(`Goal ${i+1}: ${player}`);
+
+//avg of odds
+const odds = Object.values(game.odds)
+let average = 0;
+for (const odd of odds) average += odd;
+console.log(average);
+
+average /= odds.length
+console.log(average);
+
+//print content on the clg
+for(const [team, odd] of Object.entries(game.odds)){
+  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`
+  console.log(`Odd of ${teamStr}: ${odd}`); 
+}
+
