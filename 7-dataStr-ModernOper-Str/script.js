@@ -1,3 +1,4 @@
+'use strict'
 // /*
 // const restaurent ={
 //   name: 'Classico Italiano',
@@ -530,6 +531,7 @@ orderPizza: function (mainIngredient,...otherIngredient){
   console.log(mainIngredient);
   console.log(otherIngredient);
 },
+// numGuests : 0
 };
 const [pizza,Biriyani,...other] = [...resto.mainMenu, ...resto.starterMenu]
 console.log(pizza,Biriyani,other);
@@ -554,3 +556,150 @@ add(...x);
 //order
 resto.orderPizza('mashroom','onion','spanich', 'olivers');
 resto.orderPizza('mushroom');
+
+// Short circuting (&& and ||)
+//which one is first truthy that is the result 
+console.log(3 || 'Alexa'); //3
+console.log('Alexa' || 6);// alexa
+console.log('' || 'Alexa'); //  alexa
+console.log((true || 0)); // true
+console.log(undefined || null); //null
+
+console.log(undefined || 0 || 'Hello' || 23 ); // Hello
+
+const guests1 = resto.numGuests ? resto.numGuests : 10; // if numGuest is 0 then result is 10
+console.log(guests1);
+
+console.log('---AND---');
+console.log(0 && 'Alexa');//0
+console.log('Alexa' && 0 );//0
+console.log(3 && 4); // 4 :- both of them true then result is last truth value 
+console.log('Alexa' && 'Arun'); //arun
+
+console.log('Hello' && 34 && null && 'Jonas'); //null
+
+//Nullish Coallescing operator(??) : nullish and undefined (Not 0 or '')
+//return right-hand side operand when its left-hand side operand is null or undefined otherwise return its left -hand side operand
+//leftExpr ?? rightExpr
+const guestCorrect = resto.numGuests ?? 10;
+console.log(guestCorrect);
+
+const foo = null ?? 'default string'
+console.log(foo); // default string 
+
+const baz = 34 ?? 0
+console.log(baz); //34 :- left
+
+//Logical assignment operator
+//  (||) : x || y if x is falsy,assign y to x
+const rest1 = {
+  name : 'Capri',
+  numGuests: 20,
+};
+const rest2 ={
+  name: 'La Pizza',
+  owner : 'Giovanni Rossi',
+};
+// rest1.numGuests = rest2.numGuests || 10
+// rest2.numGuests = rest1.numGuests || 10
+// rest1.numGuests ||= 10;
+// rest2.numGuests ||= 10;
+
+//here also use nullish assignment operator
+rest1.numGuests ??= 10;
+rest2.numGuests ??=10;
+
+// rest1.owner = rest1.owner && '<ANONYMOUS>' // falsy so undefined
+// rest2.owner = rest2.owner && '<ANONYMOUS>' // RIGHT HAND BCZ &&
+rest1.owner &&= '<ANOYMOUS>' // more better
+rest2.owner &&= '<ANOYMOUS>'
+
+console.log(rest1);
+console.log(rest2);
+
+//Looping Arrays
+const menu = [...resto.starterMenu, ...resto.mainMenu];
+console.log(menu);
+
+for(const item of menu) console.log(item);
+
+// for (const item of menu.entries()){
+//   // console.log(item);//0,1,..:-index
+//   console.log(`${item[0]+1}: ${item[1]}`);
+// }
+//if wnat to change the variable name item
+for(let [i,el] of menu.entries()){
+  console.log(`${i+1}: ${el}`);
+}
+// console.log([...menu.entries()]);
+
+//Enhanced object literal 
+//When a variable's name is the same as the desired property name in an object literal, the property name can be omitted. The variable's value is then automatically assigned to a property with the same name.
+//* wriding methods : dont write the fn 
+/*
+//without shorthand
+const personOld = {
+  name:name,
+  age:age,
+};
+//with shorthand
+const personEnhanced = {name,age};
+
+//fn
+    // Without shorthand
+    const objOld = {
+      greet: function() {
+        console.log("Hello!");
+      }
+    };
+
+    // With shorthand
+    const objEnhanced = {
+      greet() {
+        console.log("Hello!");
+      }
+    };'
+
+    */
+   //eg
+   //firstly put openting hourse in next obj 
+   //then add opening hourse in resto1 
+  const weekday = ['mon','tue','wed','thur','sat','sun'];
+  const openHours = {
+    [weekday[3]]:{   // so thu: replace 
+      open:12,
+      close:22,
+    },
+    [weekday[4]]:{ // fri
+      open:11,
+      close:23,
+    },
+    [weekday[5]]: { //sat
+      open:0,
+      close:24,
+    },
+  }; 
+
+const resto1 = {
+  mainMenu : ['Pizza', 'Biriyani','Mandi','Dosa'],
+  starterMenu: ['Juice', 'Soap', 'shake'],
+
+orderPizza(mainIngredient,...otherIngredient){ // avoid function by enhance method
+  console.log(mainIngredient);
+  console.log(otherIngredient);
+},
+// numGuests : 0
+// openHours:openHours, // property name and variable name are same then use enhance method
+  openHours,
+};    
+
+//optional chaining(?.)
+//we want to know mon open or not
+if(resto.openHours && resto.openHours.mon) console.log(resto.openHours.mon.open);
+
+//
+// console.log(resto.openHours.mon.open); // ERROR
+
+//with optional chaining
+console.log(resto.openHours.mon ?.open);//undefined
+console.log(resto.openHours.fri ?.open); // 11

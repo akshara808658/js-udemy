@@ -38,30 +38,37 @@ const game ={
     team2:6.5,
   },
 };
-
-const [players1,players2] = game.players;
+//split players to 2 array
+const [players1,players2] = game.players
 console.log(players1,players2);
 
-//arrange goal keeper and fieldplayers
-const [gk, ...fieldPlayers] = players1;
-console.log(gk,fieldPlayers);
+//one goalkeeper other are remaining players
+const[goalkeeper,...field] = players1
+console.log(goalkeeper,field);
 
-//all players
-const allPlayers = [...players1,...players2];
-console.log(allPlayers);
+//allplayers
+const allplayers = [...players1,...players2]
+console.log(players1,players2);
 
-const players1Final = [...players1, 'Thiago','Coutinho','Periscic'];
+//finals
+const players1Final = [...players1,'Thiago','Coutindo','Peristic']
+console.log(players1Final);
 
-const {odds: {team1, x:draw, team2}} = game;
-console.log(team1,draw,team2);//1.33 3.25 6.5
+//change odds x name to draw
+const {odds: {team1, x: draw, team2}} = game;
+console.log(team1, draw,team2);
 
-
+//
 function printGoals(...players){
+  console.log(players);
   console.log(`${players.length} goals were scored`);
 }
-printGoals('Devies','Muller','Lewandowski','Kimmich');
-printGoals('Davies','Muller');
-printGoals(...game.scored)
+// printGoals('Davies','Muller','Lewandowski','Kimich');
+// printGoals('Davies','Muller');
+printGoals(...game.score)
 
-team1 < team2 && console.log("Team 1 is more likely to win");
-team1 > team2 && console.log("Team 2 is more likely to win");
+//which team is more likely to win
+team1 < team2 && console.log('Team 1 is more likely to win');
+team2 < team1 && console.log(('Team 2 is more likely to win'));
+
+//Looping Arrays
