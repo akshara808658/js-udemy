@@ -845,7 +845,3 @@ reset.delete(2);
 console.log(reset);
 // reset.clear()
 console.log(reset.size);
-//
-function isSort(arr){
-  
-}
