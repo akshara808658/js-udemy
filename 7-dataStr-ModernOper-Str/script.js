@@ -461,7 +461,7 @@ let {firstName, lastName} = person;
 let [firstName, lastName] = person;
 */
 
-//object distructuring
+//object distructuring----------------------
 //eg:
 const person = {
   firstName: 'John',
@@ -478,7 +478,7 @@ let name = 'Alexa';
 //Destructuring
 let [a1,a2,a3,a4] = name;
 
-//spread operators:
+//spread operators: -----------------------------------------------------------------
 /**
  * allows us to quickly copy all or part of an existing array or object into another array.
  * spread opertors expands an like an array into more elements.
@@ -557,7 +557,7 @@ add(...x);
 resto.orderPizza('mashroom','onion','spanich', 'olivers');
 resto.orderPizza('mushroom');
 
-// Short circuting (&& and ||)
+// Short circuting (&& and ||)----------------------------------------
 //which one is first truthy that is the result 
 console.log(3 || 'Alexa'); //3
 console.log('Alexa' || 6);// alexa
@@ -578,7 +578,7 @@ console.log('Alexa' && 'Arun'); //arun
 
 console.log('Hello' && 34 && null && 'Jonas'); //null
 
-//Nullish Coallescing operator(??) : nullish and undefined (Not 0 or '')
+//Nullish Coallescing operator(??) : nullish and undefined (Not 0 or '')-------------------------------------
 //return right-hand side operand when its left-hand side operand is null or undefined otherwise return its left -hand side operand
 //leftExpr ?? rightExpr
 const guestCorrect = resto.numGuests ?? 10;
@@ -590,7 +590,7 @@ console.log(foo); // default string
 const baz = 34 ?? 0
 console.log(baz); //34 :- left
 
-//Logical assignment operator
+//Logical assignment operator----------------------------------
 //  (||) : x || y if x is falsy,assign y to x
 const rest1 = {
   name : 'Capri',
@@ -693,7 +693,7 @@ orderPizza(mainIngredient,...otherIngredient){ // avoid function by enhance meth
   openHours,
 };    
 
-//optional chaining(?.)
+//optional chaining(?.)-------------------------------
 //Prevents errors when accessing properties that might not exist.
 // If the property does not exist → returns undefined instead of error.
 //we want to know mon open or not
@@ -767,7 +767,7 @@ Object.values(obj) → array of values.
 Object.entries(obj) → array of [key, value].
 */
 
-//SETS : collection of unique values
+//SETS : collection of unique values--------------------------------------
 //help avoid duplication
 //const ver = new Set()
 //has - existance
@@ -821,7 +821,8 @@ console.log(uniqueItalianAndMexicanFoods);
 
 console.log(italianFood.isDisjointFrom(mexicanFood));
 
-//MAP FUNDAMENTALS
+//MAP FUNDAMENTALS-----------------------------------
+
 const reset = new Map();
 reset.set('name', 'Alexa');
 reset.set(1,'Firenze, Italy');
@@ -843,5 +844,242 @@ reset.get(time > reset.get('open') && time < reset.get('close'))
 console.log(reset.has('categories'));
 reset.delete(2);
 console.log(reset);
+reset.set([1,2],'Test');
+const arr = [1,2];
+reset.set(arr, 'Test')
 // reset.clear()
 console.log(reset.size);
+
+console.log(reset.get([1,2])); // udefined: is these not same same obj in the heap. 
+//if we put same array has diff name then
+reset.set(document.querySelector('h1'),'Heading')
+console.log(reset.get(arr));
+console.log(reset);
+
+//without using set method
+const question = new Map([
+  ['question', 'what is the best programming language in the world?'],
+  [1,'C'],
+  [2,'Java'],
+  [3,'JS'],
+  ['correct', 3],
+  [true, 'Correct'],
+  [false, 'Try again!']
+]);
+console.log(question);
+
+//convert object into map
+console.log(Object.entries(openHours));
+const hoursMap = new Map(Object.entries(openHours));
+console.log(hoursMap);
+//
+console.log(question.get('question'));
+
+for(const [key,value] of question){
+  if(typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+}
+
+// const answer = Number(prompt('Your answer'));
+const answer = 3;
+console.log(answer);
+
+console.log(question.get(question.get('correct') === answer));
+
+//convert map into array
+console.log([...question]);
+// console.log(question.entries());
+console.log([...question.keys()]);
+console.log([...question.values()]);
+console.log(question.entries());
+
+//which data structure to use 
+//1-from the prgram itself :define directily in your code
+/*
+const roles = {
+  admin:
+  user: 
+}
+*/
+//2-from the UI: data comes from the user interacting with your webpage- button cliks
+/*
+const userData ={
+  username: document.querySelector('#username').value,
+  password:document.querySelector('#password').value,
+};
+*/
+//3-from external sources: these means data fetched from APIs, database or files(JSON,CSV..)
+/*
+fetch('https://api.eg.com/products')
+.then(res => res.json())
+.then(data => {
+  console.log(data);
+});
+*/
+
+//ARRAYS                                   vs               SETS
+/*
+tasks = ['code','Eat','code']; //same                    tasks = new Set(['code','Eat','Code']); // code,Eat
+->use orderd list of values (might contain duplicates)    ->unique
+->use when you need to manipulate data                    ->remove duplication
+*/
+//OBJECT                                    vs                 MAPS
+/*                                                             task = new Map([....])
+  task ={
+  task : '',
+  date: ''
+  }
+ */
+
+//working with strings-------------
+
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log(plane[0])
+console.log(plane[1])
+console.log(plane[2])
+console.log('B737'.length)
+console.log('B737'[0])
+console.log(airline.indexOf('r'))
+console.log(airline.lastIndexOf('r'))
+console.log(airline.indexOf('portugal')) // -1 not exist here
+
+console.log(airline.slice(2)) // P Air Potugal : here position of inde 2 is P so strating with that position
+console.log(airline.slice(2,15));// in end index num before stop means if index is 2 then it stop in index 1 at end
+
+console.log(airline.slice(0,airline.indexOf(' ')))
+console.log(airline.slice(airline.lastIndexOf(' ')+1)) // +1 is for remove the space 
+
+console.log(airline.slice(-2)); //al:- slice at end 
+console.log(airline.slice(1,-1)) // AP Air Portuga
+
+//
+function chekMiddleSeat(seat){
+ // B and E are middle seats
+ const s = seat.slice(-1)
+ if(s === 'B' || s === 'E') console.log('You got the middle seat');
+ else console.log('You got lucky')
+}
+(chekMiddleSeat('11B'));
+(chekMiddleSeat('23C'));
+(chekMiddleSeat('3E'));
+
+console.log(new String('Alexa')); // string obj not a primitive string
+console.log(typeof new String('Alexa')) // obj
+
+console.log(typeof new String('Alexa').slice(1)) // string
+
+// part2
+// const airline = 'TAP Air Portugal';
+// const plane = 'A320';
+
+console.log(airline.toLocaleLowerCase());
+console.log(airline.toUpperCase());
+
+//FIX CAPITALIZATION IN NAME
+const passenger = 'alExA';
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect = passengerLower[0].toUpperCase()+passengerLower.slice(1);
+console.log(passengerCorrect);
+
+//comparing emails
+const email = 'hello@alexa.io';
+const loginEmail = ' Hello@Alexa.Io \n';
+
+// const lowerEmail = loginEmail.toLowerCase();
+// const trimmedEmail = lowerEmail.trim(); // for reducing space
+// console.log(trimmedEmail)
+
+const normalizedEmail = loginEmail.toLowerCase().trim() // in simply
+console.log(normalizedEmail);
+console.log(email === normalizedEmail);
+
+//replcing
+const priceGB = '288,97£';
+const priceUS = priceGB.replace('£','$').replace(',', '.')
+console.log(priceUS);
+
+//
+const announcement = 'All passengers come to barding door 23. Boarding door 23!'
+console.log(announcement.replaceAll('door','gate'));
+//regular expression
+console.log(announcement.replace(/door/g,'gate')); // g is global flag replace all matches
+//
+const personEmail = 'hey@alexa.com';
+const incorrectE = ' Hey#alexa.id' ;
+
+const correct = incorrectE.trim().toLowerCase().replace('#','@').replace('id','com');
+console.log(correct);
+console.log(personEmail);
+
+//Booleans
+const planee = 'A320neo';
+console.log(plane.includes('A320'));
+console.log(plane.includes('Boeing'));
+console.log(plane.startsWith('Air'));
+
+if(plane.startsWith('Air') && plane.includes('A320')){
+  console.log('Part of the new airbus family');
+}
+
+//practise
+function checkBaggage(item){
+ const baggage = item.toLowerCase()
+ if(baggage.includes('knife') || baggage.includes('gun')){
+  console.log('You are NOT allowed on board')
+ }else {
+  console.log('welcome aboard!');
+ }
+}
+checkBaggage('I have a laptop, some Food and a pocket Knife');
+checkBaggage('Socks and camera');
+checkBaggage('Got some snacks and a gun for protection');
+
+//split
+console.log('a, very, nice, string'.split(','))
+console.log('a + very + nice + string'.split('+'))
+console.log('Alexa John'.split(' '))
+
+const [first, last] = 'Alexa John'.split(' ');
+
+const newName = ['Mr.', first, last.toUpperCase()].join(' ')
+console.log(newName);
+
+//we want to capitalize one-by-one
+function capitalize(name){
+  const names = name.split(' ');
+  const namesUpper = [];
+
+  for(const n of names){
+    // namesUpper.push(n[0].toUpperCase()+ n.slice(1));
+    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+  console.log(namesUpper.join(' '))
+}
+capitalize('jessica ann smith devis');
+capitalize('jonas schemmedtmann');
+
+//padding
+const message = 'Go to gate 23!';
+console.log(message.padEnd(25,'.'));
+console.log(message.padStart(25,'+').padEnd(35,'+')); // here work like alredy 25 + exist so other 10 are in seen in padEnd less than 25 does not work.
+console.log('Jonas'.padStart(12,'+'));
+
+//
+function maskCreditCard(number){
+  const str = number + '';
+  const last = str.slice(-4);
+  return last.padStart(str.length, '*');
+}
+console.log(maskCreditCard(223548786767786786));
+console.log(maskCreditCard('3467798246753465576'));
+
+//Repeat
+const message2 = 'Bad weather... All Departement Delayed...';
+console.log(message2.repeat(5))
+
+function planeInline(n){
+  console.log(`There are ${n} planes in line ${'✈️' .repeat(n)}`)
+}
+planeInline(5);
+planeInline(10);
