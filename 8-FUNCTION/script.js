@@ -1,4 +1,3 @@
-
 //Default fn prameters-------------
 //allow named para to be intialized with default values if no value or undefined is passed.,
 //eg
@@ -355,7 +354,7 @@ employeesDet();
  * })();
 */
 //usage : we created 2 btn in an html add 2 script.js in diff name we want to merage both of them in this condition we use var outside the function or block so it's accessible everwhere(ie, in any file) so we first created green box is first worked after move to another script red box last value is printed in both box bcz it' global scope that's why we are using IIFE
-
+/*
 const runOnce = function(){
   console.log('This will never run again');
 };
@@ -373,8 +372,28 @@ runOnce();
   var notPrivate = 45;
 }
 console.log(notPrivate);
-
+*/
 //CLOSURE-----------------------------
-const secureBooking = function(){
-  
+//Lexical Environment : is the local memory along with the lexical environment of the parent
+//here c is lexically inside a and a ia lexically inside the global scope.
+//lexical environment: local memory + reffernce to lexical environment of parent, parent- where actually that fn sit inside the code
+/*
+function a(){
+  var b = 20;
+   c();
+  function c(){
+  }
 }
+a()
+console.log(b)
+*/
+//closure : fn along with lexical scope closure(fn together with refference to its surrounding state)
+function parent(){
+  var a = 7;
+  function inner(){
+    console.log(a)
+  }
+  return parent
+}
+var z = parent();
+console.log(z);
