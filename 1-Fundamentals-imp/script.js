@@ -342,3 +342,28 @@ in 2015 ES6 the biggest update to the lang */
  * ES5 full supported in all browser, ready to use today
  * ES6  well supported in all modern browsers, no support in old browsers, most features in production with transpiling and polyfilling
  */
+/**
+ * scope: where the fn and variable are accesess.
+ * 1-Global scope: variable declare outside the the fn or block and accessible everywhere
+ * let a=1;
+ * console.log(a)
+ * 2-Functional scope: variable declare inside the fn then it accessible only inside the fn , var is fubctional scope bcz inside the fn anywhere acessible 
+ * function test(){
+ * console.log(a)
+ * var a = 2
+ *  }
+ * 3-Block scope: variable declare with let and const and accessible only inside the fn
+ * if(true){
+ * let a = 12;
+ * console.log(a)
+ * }
+ * 4-lexical scope: inner fn can accessible outer variable 
+ * function outer(){
+ * let a =20;
+ * function inner(){
+ * console.log(a)
+ * }
+ * inner()
+ * }
+ * outer()
+ */

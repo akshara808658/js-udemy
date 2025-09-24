@@ -174,11 +174,10 @@ for(const train of trains.split('+')){
 const packages =
   '_Delayed_Pickup;jfk123;ldn456;08:00+_Delivered;ldn456;jfk123;10:45+_In_Transit;nyc789;ldn456;12:30+_Delayed_Delivery;ldn456;nyc789;16:15';
 
-  for(const package of packages.split('+')){
-  const [type,from,to,time] = package.split(';')
-  const output3 = `${type.startsWith('_Delayed')? '🔴' : ''} ${type.replaceAll('_',' ')} from ${from.slice(0,3).toUpperCase()} to ${to.slice(0,3).toUpperCase()} ${time.replace(':','h')}`.padStart(39);
-  console.log(output3) 
-  }
+  // for(const package of packages.split('+')){
+  // const [type,from,to,time] = package.split(';')
+  // const output3 = `${type.startsWith('_Delayed')? '🔴' : ''} ${type.replaceAll('_',' ')} from ${from.slice(0,3).toUpperCase()} to ${to.slice(0,3).toUpperCase()} ${time.replace(':','h')}`.padStart(39);
+  // console.log(output3) 
+  // }
 
-
-
+//
