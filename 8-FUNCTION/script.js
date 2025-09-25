@@ -388,6 +388,7 @@ a()
 console.log(b)
 */
 //closure : fn along with lexical scope closure(fn together with refference to its surrounding state)
+//Closure :Function bundled with its lexical environment is known as a closure. Whenever function is returned, even if its vanished in execution context but still it remembers the reference it was pointing to.
 function parent(){
   var a = 7;
   function inner(){
@@ -397,3 +398,50 @@ function parent(){
 }
 var z = parent();
 console.log(z);
+//
+/**
+hoisting :var and fn declaration moves to top of their scope is called hoisting 
+scope: where  the variable is accessible 
+global scope: var declare outside the fn is called global
+*/
+//uses of closure:
+//module design pattern , currying , fn like once , memorize , maintaining state in async world , setTimeouts, Iterators
+let f;
+
+const g = function(){
+  const a =23;
+  f = function(){
+    console.log(a*2)
+  }; 
+};
+const h = function (){
+  const b = 777;
+  f = function(){
+    console.log(b*2)
+  }
+}
+g();
+f();
+console.dir(f)
+
+//Re-assign
+h();
+f();
+console.dir(h);
+
+//
+function boardPassenger(n,wait){
+  const perGroup = n/3;
+
+  setTimeout(function(){
+    console.log(`we are now boarding all ${n} passengers`);
+    console.log(`There are 3 groups, each with ${perGroup} passengers`)
+  },wait*1000);
+
+  console.log(`will start boarding in ${wait} seconds`);
+};
+const perGroup = 1000;
+boardPassenger(180,3);
+
+//
+
