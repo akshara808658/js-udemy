@@ -378,8 +378,14 @@ console.log(squre);
 
 //4: make a array with the length of each word([5,6,6])
 const fruits = ['apple','banana','cherry'];
-const newLengthArray = fruits.map(el => el.length)
+const newLengthArray = fruits.map(x => x.length)
 console.log(newLengthArray);
+
+//5-turn to upperCase
+const line = ['hello','world','javascript'];
+const capital = line.map(el => el.toUpperCase());
+console.log(capital);
+
 //filter----------:
 //select elements that satisfy a condition .returns a new array
 //const filteredArray = arr.filter(element => /**condition */);
@@ -403,12 +409,32 @@ console.log(userAge)
 const num2 = [12,5,8,130,44];
 const greatTen = num2.filter(n => n>10);
 console.log(greatTen)
+
+//4-only names of users under 30
+const userName = [
+  {name: 'Alice', age:25},
+  {name: 'Bob', age: 32},
+  {name:'Charlie', age:28},
+];
+const underthirty = userName.filter(x =>x.age< 30).map(x =>x.name);
+console.log(underthirty);
+
+//5-keep only even numbers
+const array1 = [3,7,10,15,18];
+const evenNum = array1.filter(n => n%2 === 0);
+console.log(evenNum);
+
+//6-add the word length together
+const words = ['pen','pencil','book'];
+const totalLength = words.map(el => el.length).reduce((acc,curr) => acc+curr,0);
+console.log(totalLength)
+
 //reduce----:
 //accumulate array into single value or array
 //const result = arr.reduce((accumulator,currenvalue) => {
 //  return /**new accumulator */},initialvalue)
 
-//1: sum of numbers
+// //1: sum of numbers
 const arr11= [1,2,3,4];
 const resultSum = arr11.reduce((acc,curr) => acc+ curr, 0);
 console.log(resultSum);
@@ -420,15 +446,354 @@ const names = user.reduce((acc,curr) => {
 },[]);
 console.log(names)
 
+//3-total sum
+let num3 = [10,20,30,40];
+const sumNum = num3.reduce((acc,curr) => acc+curr, 0);
+console.log(sumNum);
+
+//4-score >= 50
+const students = [
+  {name: 'Alice',score:80},
+  {name: 'Bob',score: 45},
+  {name: 'Charlie', score:60},
+];
+const greater = students.filter(x => x.score >= 50).map(x => x.name)
+console.log(greater);
+
+//5-Turn into one string
+const array2 = ['a','b','c'];
+const str = array2.reduce((acc,curr) =>acc+curr, "");
+console.log(str);
+
 // //combination of map,reduce,filter
 // //get sum of ages of user under 30
-// const details = [
-//   {firstName: 'Alice', age:25},
-//   {firstName: 'Bob', age:32},
-//   {firstName: 'Catherine', age:20},
-// ];
-// const combine = details.filter(x => x.age < 30).map(x => x.age).reduce((acc,curr) =>{
-//   acc = acc + curr;
-//   return acc;
-// },0);
-// console.log(combine);
+//1
+const details = [
+  {firstName: 'Alice', age:25},
+  {firstName: 'Bob', age:32},
+  {firstName: 'Catherine', age:20},
+];
+const combine = details.filter(x => x.age < 30).map(x => x.age).reduce((acc,curr) =>{
+  acc = acc + curr;
+  return acc;
+},0);
+console.log(combine);
+
+//2
+const student2 = [
+  {name: 'Alice' , score: 80},
+  {name: 'Bob' , score: 45},
+  {name: 'Charlie' , score: 60},
+  {name: 'David' , score: 30},
+];
+const greaterSixty = student2.filter(x =>x.score >= 60).map(x => x.name.toUpperCase());
+console.log(greaterSixty);
+
+//3:- total no.of chara in word longer than 3 latters 
+const words2 = ['pen','pencil','book','hi','apple'];
+const totalNum = words2.map(x => x.length).filter(x =>x > 3).reduce((acc,curr) => acc+curr,0);
+console.log(totalNum)
+
+//find method---------------------------------------------------------------
+//diff b/w find and filter: 
+//find: return only the first matching element(single value not array), filter:return all matching element(array)
+const num4 = [10,20,30,40,50];
+console.log(num4.filter(n => n >25)); //[ 30, 40, 50 ]
+console.log(num4.find(n => n > 25)); //30
+
+//1:first even no in the array
+const findArr = [1,3,7,8,10];
+const firstEven = findArr.find(n => n%2 === 0);
+console.log(firstEven);//8
+
+//2-find the whoes name is Bob
+const students3 = [
+  { name: "Alice", age: 20 },
+  { name: "Bob", age: 22 },
+  { name: "Charlie", age: 25 }
+];
+const bob = students3.find(el => el.name ==='Bob');
+console.log(bob);
+
+//3-find the first word longer than 4 letters
+const words3 = ["pen", "book", "pencil", "hi"];
+const longerThree = words3.find(w => w.length > 4);
+console.log(longerThree);
+
+//findIndex-------------------------
+//1: find index of first even no
+const num5 = [1,3,5,7,8,10];
+const index = num5.findIndex(el => el%2 === 0);
+console.log(index);
+
+//2-element not found 
+const num6 = [1,3,5];
+const index2 = num6.findIndex(el => el%2 === 0);
+console.log(index2); //-1;
+
+//findLast------------------------------
+//return the last element in the array satisfies condition
+const num7 = [1,2,3,4,5,8,0];
+const lastEven = num7.findLast(n => n % 2 === 0);
+console.log(lastEven);
+
+//findLastIndex------------------------
+const lastIndexOfEven = num7.findLastIndex(n => n%2 === 0);
+console.log(lastIndexOfEven);
+
+//some-------
+//almost same as find method in some result is boolean 
+const num8 = [1,3,5,6];
+const haveEven = num8.some(n => n%2 === 0);
+console.log(haveEven); //true
+
+//every--------
+//check all element in an array satisfy the condition return boolean
+const num9 = [2,4,6,8];
+const everyNumEven = num9.every(n => n % 2 === 0);
+console.log(everyNumEven); //true
+
+//flat--------------
+//1-flatens nested array
+const array3 = [1,[2,3],[4,5]];
+console.log(array3.flat())
+
+//2-flatten multiple levels
+const flatArr =[1,[2,[3,[4]]]];
+console.log(flatArr.flat(3));
+
+//flatMap---------------------------
+//map each element and then flattens the results one level
+//1 : maps nos to array and flattens 
+const arr12 = [1,2,3];
+const result = arr12.flatMap(n => [n, n*2]);
+console.log(result);
+
+//2:flatten string to chara
+const arr13 = ['hi','bye'];
+const result2 = arr13.flatMap(str => str.split(''));
+console.log(result2);
+
+//3:keep only even no.s and double them
+const num10 = [1,2,3,4];
+const result3 = num10.flatMap(n =>(n%2 === 0 ? [n*2] : []));
+console.log(result3);
+
+//sort--------------------------------------
+//sorts the elements of an array in place
+//not numeric
+const num11 = [10,5,20,1];
+console.log(num11.sort()); //[1,10,20,5];
+
+//numeric
+const numericSort = num11.sort((a,b) => a - b); // accendind , b-a decending 
+console.log(numericSort);
+
+//sorting string 
+//length
+const fruit=['banana','apple','cherry'];
+fruit.sort((a,b) => a.length - b.length);
+console.log(fruit);
+
+//sort by age acenting
+const users1 = [
+  {name: "Alice", age: 25},
+  {name: "Bob", age: 30},
+  {name: "Charlie", age: 20}
+];
+users1.sort((a,b) =>a.age - b.age);
+console.log(users1);
+
+//groupBy---------------------
+//groups elements of an array
+// const numbers = [1,2,3,4,5,6,7];
+// const grouped = numbers.groupBy(n => n%2 === 0 ? 'Even' : 'Odd');
+// console.log(grouped); // not run in terminal
+
+//new Array()----------------------
+const arr14 = new Array(1,2,3,5);
+console.log(arr14);
+
+
+//fill-----------
+//array.fill(value, start  = 0, end = arry.length)
+const arr15 = new Array(5).fill(0);
+console.log(arr15);
+
+const arr16 = [1,2,3,4,5].fill('x',1,4);
+console.log(arr16); //[1,x,x,x,5];
+
+//Arry.from----------------
+//new array from an array-like object or iterable.
+const chars = Array.from('hello');
+console.log(chars);
+
+//from set
+const set = new Set([1,2,3]);
+console.log(Array.from(set)); //[1,2,3];
+
+//using map fn 
+const squres =Array.from([1,2,3], x => x*x);
+console.log(squres);
+
+//create array of no.s
+const x = Array.from({length:7}, () => 5);
+console.log(x);
+
+const arr17 = Array.from({length:4}, (_,i) => i);
+console.log(arr17);//[0,1,2,3,4]
+
+//Which methos is use? ------
+//---->change from original: 
+  //add: push(e),unshift(s)
+  //remove:pop(e),shift(e),splice(any)
+  //others :-reverse, sort ,fill
+
+//---->A new array based on original
+  //same length as original: map
+  //filtered using condition : filter
+  //teking portion of original: slice
+  //flat : flat,flatMap
+
+//An array index
+  //value: indexof
+  //test condition : findIndex, findLastIndex
+
+//An array element 
+  //test condition : find, findLast
+
+//know if array includes
+   //value: includes
+   //test condition : some, every
+
+//A new string 
+  //seperation: join
+
+//transform to value
+  //based on accumulator :reduce  
+
+//just loop array 
+   //based on callback : forEach
+
+//new array
+  //Array.from
+  //new Array(n)
+
+//concat
+  //spread operators : [...arr1,...arr2]
+
+//new array with unique value
+  //[...new Set(arr)]
+
+//------------------------------------------------------PRACTICE----------------------------------------------------------------
+const practiseArr = [1,2,3,4,5,2,3,3];
+//push 6
+ practiseArr.push(6)
+ console.log(practiseArr);
+
+ //remove last el
+ practiseArr.pop();
+ console.log(practiseArr);
+
+ //remove first
+ practiseArr.shift();
+ console.log(practiseArr);
+
+ //add 0 at start
+ practiseArr.unshift(0);
+ console.log(practiseArr);//[0,2,3,5,2,3]
+
+ //replace 3 with x
+ practiseArr.splice(2,2,'x');
+ console.log(practiseArr) //[0,2,x,5,2,3]
+
+ //replace middle element with 9
+ practiseArr.fill(9,2,3);
+ console.log(practiseArr); //[0,2,9,5,2,3]
+
+ //merge with [7,8,9];
+ console.log( practiseArr.concat([7,8,9,3]));
+
+//check if 2 exist
+console.log(practiseArr.includes(2));
+
+//indexof first 3
+console.log(practiseArr.indexOf(3));
+console.log(practiseArr) //[0,2,9,5,2,3,3]
+
+//indexof last 3
+console.log(practiseArr.lastIndexOf(3));
+
+//extract [2,9,5]
+console.log(practiseArr.slice(1,4));
+
+//join with -
+console.log( practiseArr.join('-'))
+
+//convert all array to string
+console.log(practiseArr.toString());
+
+//print each el with its index
+practiseArr.forEach((el,i) => console.log(`${i}: ${el}`));
+
+//double no
+const preacticeDouble = practiseArr.map(n => n*2)
+console.log(preacticeDouble) //[0,4,18,10,4,6,6]
+
+//get only even no.s
+const getEven = practiseArr.filter(n => n%2 === 0);
+console.log(getEven);
+
+//sum of all el
+const sumEl = practiseArr.reduce((acc,curr) => acc+curr,0);
+console.log(sumEl);
+
+//find the max value
+const maxValue = practiseArr.reduce((acc,curr) =>{
+return curr > acc ? curr:acc;
+},[0]);
+console.log(maxValue);
+
+//first no > 3
+const practise = [0, 2, 9, 5, 2, 3, 7, 8, 9, 3];
+
+const greaterThree = practise.find(n => n > 3);
+console.log(greaterThree) //9 :-bcz first matching el > 3
+
+//find index of firstEven 
+const firstEvenNum = practise.findIndex(n=> n%2 === 0);
+console.log(firstEvenNum); 
+
+//find last 
+const lastIndexOfEvenNum = practise.findLastIndex(n => n%2 === 0);
+console.log(lastIndexOfEvenNum); //7
+
+//check if any no > 5
+const checkGreaterFive = practise.some(n => n > 5);
+console.log(checkGreaterFive);
+
+//check all no.s are +ve
+const checkPositive = practise.every(n => n >= 0);
+console.log(checkPositive);
+
+//flat [1,[2,[3]]];
+const flatenArr = [1,[2,[3]]];
+const flatEl = flatenArr.flat(2);
+console.log(flatEl); //[1,2,3];
+
+//double num but remove odd ones
+const removeDouble = practise.flatMap(n => n%2 === 0 ? [n * 2] : []);
+console.log(removeDouble);
+
+//create empty array of length 4 AND fill 1;
+const createArr = new Array(4).fill(1);
+console.log(createArr);
+
+//create array 1-5
+const newArray2 = Array.from({length:5}, (_, i) => i+1);
+console.log(newArray2)
+
+//square
+const newArray3 = Array.from([1,2,3], n => n*2);
+console.log(newArray3);
+

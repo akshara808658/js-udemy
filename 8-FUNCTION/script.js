@@ -399,11 +399,6 @@ function parent(){
 var z = parent();
 console.log(z);
 //
-/**
-hoisting :var and fn declaration moves to top of their scope is called hoisting 
-scope: where  the variable is accessible 
-global scope: var declare outside the fn is called global
-*/
 //uses of closure:
 //module design pattern , currying , fn like once , memorize , maintaining state in async world , setTimeouts, Iterators
 let f;
@@ -444,4 +439,14 @@ const perGroup = 1000;
 boardPassenger(180,3);
 
 //
+function xy(){
+  let b =0;
+  return () => {
+    b++;
+    console.log(b)
+  }
+}
+const counter = xy();
+counter();
+
 
