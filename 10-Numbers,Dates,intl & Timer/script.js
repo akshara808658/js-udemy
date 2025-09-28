@@ -119,3 +119,38 @@ const diameter = 287_460_000_000;
 console.log(diameter);
 console.log(Number('1_500')); //NaN
 console.log(parseInt('1_500')); //1
+
+//BigInt : use bigInt whenever you need integers larger tan Number,MAX_SAFE_INTEGER or need exact precision for huge no.s
+//usage: security, working with very large integers
+//write: add an 'n' at the end of an integer
+console.log(2 ** 53 -1) //9007199254740991
+console.log(Number.MAX_SAFE_INTEGER) //9007199254740991
+console.log(2 ** 53 +1) //9007199254740992
+
+console.log(546357682371793341241341232716) // cannot display accurately so use n at end
+
+console.log(546357682371793341241341232716n)
+
+//operations
+console.log(100000000000000n + 100000000000000000n);
+
+//cannot work operation with regular number
+// const huge = 76474716482739799072n;
+// const num = 12;
+// console.log(huge + num) //error
+
+//
+console.log(20n > 15) // true
+console.log(20n === 20) // false
+console.log(typeof 20n) // bigint
+
+//Division
+console.log(10n/ 3n); // 3n : remove decimal part
+console.log(10/3) // 3.333
+
+//Creating Dates
+const now = new Date();
+console.log(now);
+
+console.log(new Date('December 24, 2025'));
+console.log(new Date(2025, 1, 29)); // march 1 bcz auto correct date
