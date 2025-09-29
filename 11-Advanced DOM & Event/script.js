@@ -4,83 +4,83 @@
 //node method and property : textContent, childNodes, parentNode, cloneNode
 //Node Types : Document --> document object, Element --> <div> html div object, Text --> text inside elements, Comment --> comment object
 
-//selecting, creating, & deleting elements
-console.log(document.documentElement);
-console.log(document.head);
-console.log(document.body);
+// //selecting, creating, & deleting elements
+// console.log(document.documentElement);
+// console.log(document.head);
+// console.log(document.body);
 
-document.querySelector('.header');
-const allSections = document.querySelectorAll('.section');
-console.log(allSections);
-document.getElementById('section--1');
-const allButtons = document.getElementsByTagName('button');
-console.log(allButtons);
+// document.querySelector('.header');
+// const allSections = document.querySelectorAll('.section');
+// console.log(allSections);
+// document.getElementById('section--1');
+// const allButtons = document.getElementsByTagName('button');
+// console.log(allButtons);
 
-//old methods: 
-/**
- * document.getElementById('IdName');
- * document.getElementByClassName('className');
- * document.getElementByTagName('div');
- */
-//Modern method
-/**
- * document.querySelector('ClassName');
- * document.querySelectorAll('p');
- */
+// //old methods: 
+// /**
+//  * document.getElementById('IdName');
+//  * document.getElementByClassName('className');
+//  * document.getElementByTagName('div');
+//  */
+// //Modern method
+// /**
+//  * document.querySelector('ClassName');
+//  * document.querySelectorAll('p');
+//  */
 
-//creating & inserting elements
-// insertAdjacentHTML
-const header = document.querySelector('.header');
+// //creating & inserting elements
+// // insertAdjacentHTML
+// const header = document.querySelector('.header');
 
-const message = document.createElement('div');
-message.classList.add('cooki-message');
-message.innerHTML = 'Heyy Guyss...!. <button>Submit</button>'
+// const message = document.createElement('div');
+// message.classList.add('cooki-message');
+// message.innerHTML = 'Heyy Guyss...!. <button>Submit</button>'
 
-header.prepend(message);
-header.append(message)
+// header.prepend(message);
+// header.append(message)
 
-//append() & prepend() as tools for moving or inserting nodes inside a parent element
-//cloneNode(): makes copy of a DOM node
-//eg
-const box = document.querySelector('#box');
-const para = document.createElement('p');
-para.textContent = "I' m new here";
+// //append() & prepend() as tools for moving or inserting nodes inside a parent element
+// //cloneNode(): makes copy of a DOM node
+// //eg
+// const box = document.querySelector('#box');
+// const para = document.createElement('p');
+// para.textContent = "I' m new here";
 
-// box.prepend(para); // insert start
-// box.append(para.cloneNode(true)); // insert end, clone node : repeat
-box.before(para);
-// box.after(para);
+// // box.prepend(para); // insert start
+// // box.append(para.cloneNode(true)); // insert end, clone node : repeat
+// box.before(para);
+// // box.after(para);
 
-//styles, attributes and classes
-//style
-para.style.backgroundColor = '#37383d';
-para.style.width = '120%';
+// //styles, attributes and classes
+// //style
+// para.style.backgroundColor = '#37383d';
+// para.style.width = '120%';
 
-console.log(para.style.height);
-console.log(para.style.backgroundColor);
+// console.log(para.style.height);
+// console.log(para.style.backgroundColor);
 
-console.log(getComputedStyle(para).color);
-console.log(getComputedStyle(para).height);
+// console.log(getComputedStyle(para).color);
+// console.log(getComputedStyle(para).height);
 
-message.style.height = Number.parseInt(getComputedStyle(para).height,10)+ 40 + 'px';
+// message.style.height = Number.parseInt(getComputedStyle(para).height,10)+ 40 + 'px';
 
-//attributes
-const link = document.getElementById('link');
+// //attributes
+// const link = document.getElementById('link');
 
-console.log(link.getAttribute('href'));
-console.log(link.getAttribute('target'));
+// console.log(link.getAttribute('href'));
+// console.log(link.getAttribute('target'));
 
-//data attribute
-const box1 = document.getElementById('box1');
+// //data attribute
+// const box1 = document.getElementById('box1');
 
-console.log(box1.dataset.user);
-console.log(box1.dataset.level);
+// console.log(box1.dataset.user);
+// console.log(box1.dataset.level);
 
 //Classes
-box.classList.add(); // add a class
-box.classList.remove(); // removing a class
-box.classList.toggle(); // add the class if missing removes it is present
-box.classList.contains(); // existance test true or false
+// box.classList.add(); // add a class
+// box.classList.remove(); // removing a class
+// box.classList.toggle(); // add the class if missing removes it is present
+// box.classList.contains(); // existance test true or false
 
 /*
 //
@@ -109,3 +109,62 @@ box.append(createEl.cloneNode(true));
 
 */
 //getBoundingClientReact(): method return a DOMReact provide information about the size of an element and it's possition relative to viewport , includes property such as top, left, right, bottom, width, and height
+
+//Type of Events & Event Handler------
+//Types of Event
+//Mouse Events
+/**
+ * click - single click
+ * dbclick - double click
+ * mousedown - button pressed
+ * mouseup - button released
+ * mouseover - pointer enters element 
+ * mouseout - pointer leaves element
+ * mouseenter / mouseleave - enter / leave
+ * mousemove - pointer moves inside element
+ */
+const btn = document.getElementById('btn');
+//1-click
+// btn.addEventListener('click',() => {
+//   console.log('Button clicked!');
+// });
+
+// //2-dbclick
+// btn.addEventListener("dblclick",() => {
+//   console.log('Button double-clicked!')
+// });
+// //3-mousedown & mouseup
+// btn.addEventListener("mousedown", () => {
+//   console.log("mouse button pressed");
+// });
+// btn.addEventListener("mouseup", () =>{
+//   console.log("mouse button released");
+// });
+// //4-mousemove
+// document.addEventListener("mousemove", (e) =>{
+//   console.log("mouse at:", e.clientX,e.clientY);
+// });
+
+//5-mouseover & mouseenter
+const parent = document.getElementById('parent');
+const child = document.getElementById('child');
+
+parent.addEventListener('mouseover', () => console.log('parent mouseover'));
+child.addEventListener('mouseover', () => console.log('child mouseover'));
+
+//keyboard event---
+//keydown - key is pressed down
+const input = document.getElementById('inputField');
+
+input.addEventListener('keydown', (event) =>{
+  console.log('key pressed:', event.key);
+   console.log('key code:', event.code);
+});
+//keyup - key is released
+input.addEventListener('keyup', (event) => {
+  console.log('key released:', event.key);
+});
+//keypress - use keydown and keyup
+input.addEventListener('keypress', (event) => {
+  console.log('key char pressed:', event.key);
+});
