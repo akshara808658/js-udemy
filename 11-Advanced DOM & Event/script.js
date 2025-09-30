@@ -145,12 +145,12 @@ const btn = document.getElementById('btn');
 //   console.log("mouse at:", e.clientX,e.clientY);
 // });
 
-//5-mouseover & mouseenter
+//5-mouseover & mouseenter : 
 const parent = document.getElementById('parent');
 const child = document.getElementById('child');
 
-parent.addEventListener('mouseover', () => console.log('parent mouseover'));
-child.addEventListener('mouseover', () => console.log('child mouseover'));
+parent.addEventListener('mouseover', () => console.log('parent mouseover')); // Bubbles (event goes through DOM tree)
+child.addEventListener('mouseover', () => console.log('child mouseover')); // not Bubbles 
 
 //keyboard event---
 //keydown - key is pressed down
@@ -168,3 +168,81 @@ input.addEventListener('keyup', (event) => {
 input.addEventListener('keypress', (event) => {
   console.log('key char pressed:', event.key);
 });
+
+//Bubbling & capturing----
+//3 phases for DOM tree
+/*
+ * 1-capturing phase :
+ * event start from window-> document -> html -> body -> ... - >target element 
+ * 2-target phase
+ * the event reched the actual element
+ * 3-Bubbling
+ * after reching target the bubbles up back through the DOM
+*/
+//scroll navigation 
+//firstly we want to know the position relative viewport so use getBoundingClientReact()
+
+// window.addEventListener('scroll', function(e){
+//   console.log(window.scrollY)
+// })
+
+//sticky navigation: Intersection Observer API 
+//-----------------------------------------------
+//we want to get parent from child
+// let txt = document.querySelector('.text');
+// console.log(txt.parentNode);
+
+//parent to child 
+const textParent = document.querySelector("#title");
+console.log(textParent.firstElementChild);
+console.log(textParent.lastElementChild);
+console.log(textParent.childNodes); // get all child
+//presviou element: previousElementSibiling
+
+//manipulating element
+const div = document.createElement('div');
+div.innerHTML = "<p>Welcome to Hello world</p>";
+document.body.appendChild(div)
+console.log(div);
+
+//we want to create contact
+const menu = document.getElementById('menu');
+
+const contact = document.createElement('li');
+contact.innerHTML = "  Contact"
+menu.appendChild(contact);
+console.log(menu.textContent);
+
+//attribute methods
+// console.log(input.attributes);
+console.log(input.getAttribute('type'));
+
+//setAtrribute
+input.setAttribute('class', 'user')
+console.log(input)// extra class
+
+//hasAttribute
+console.log(input.hasAttribute('class')); // true
+
+//removeAtrribute
+input.removeAttribute('placeholder')
+console.log(input);
+
+//getComputerStyle(): clg(window.getComputerStyle(inputBox).width);
+//className
+const header = document.querySelector('#heading');
+
+// header.className += " new";
+// console.log(header);
+
+//classList
+header.classList.add('new', 'new2');
+console.log(header);
+
+//replace
+header.classList.replace('message','msg');
+console.log(header);
+
+//toggle
+header.classList.toggle('msg');
+console.log(header);
