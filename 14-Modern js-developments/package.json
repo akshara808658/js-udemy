@@ -5,12 +5,14 @@
   "license": "ISC",
   "author": "Akshara",
   "type": "commonjs",
-  "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "leaflet": "^1.9.4",
     "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.0"
   }
 }

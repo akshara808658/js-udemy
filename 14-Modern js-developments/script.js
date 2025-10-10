@@ -89,3 +89,58 @@ const { addToCart} = require('./shoppingCart.js');
 //package.json : as the heart of a Node.js . it stores the metadate and configuration about your project
   // without this npm would not know  which packages your needs (run --> npm start)
 //package-lock.json : locks exact versions of dependencies for repoducibility
+
+//shallow clone : top level properties are copied that means does not affect original
+//deepClone: everything will copied , not affect original
+
+import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+
+const state = {
+   cart:[
+      {product: 'bread', quantity: 5},
+      {product: 'pizza', quantity: 5},
+   ],
+   user: {loggedIn : true},
+};
+const stateClone = Object.assign({},state);
+const stateDeepClone = cloneDeep(state);
+
+console.log(stateClone);
+console.log(stateDeepClone);
+
+//Bundling
+/**
+ * combine file : if your project has multiple js, css , or other files bundling merges them into fewer files.
+ */
+
+//Configuring: setting up option or parameters 
+//Babel : js combiler, it allows to write modern js and convert it into older js
+// configuring babel : telling bebel what transformation to do.
+
+//polyfillling
+//some modern js cannot be compiled like promise, fetch, Array.from
+//polyfll: extra code that adds support for missing features in older browsers
+
+
+//optional chaining , nullish colashig operator 
+
+//Imparitive & declaritive programming
+//imparitive: step by step like 
+//eg:we want to find sum first default sum = 0; then loop throught the array after that add it sum+=num[i]
+
+//declaritive: what to do 
+// using by reduce method for finding sum acc+curr,0;
+
+//functional programming techinques
+/**
+ * try avoid data mutations 
+ * use built-in methods that don't produce side effects
+ * do data transformations with methods such as map , filter, reduce
+ * try to avoid side effects in fns this is of course not always possible
+ */
+/**DECLARATIVE SYNTAX 
+ * use array and object destructuring 
+ * use the spread operator
+ * use the ternary operator
+ * use template literals
+*/

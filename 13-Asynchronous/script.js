@@ -177,18 +177,18 @@ const p2 = new Promise((resolve,reject) => {
 //  getData();
 
  //async await--
-//  async function handlePromise(){
-//    console.log('Hello World') // not wait for 10 sec
-//    //JS engine was waiting for promise to resolved 
-//    const val = await p1;
-//    console.log('Hey I am Here!');
-//    console.log(val);
+ async function handlePromise(){
+   console.log('Hello World') // not wait for 10 sec
+   //JS engine was waiting for promise to resolved 
+   const val = await p1;
+   console.log('Hey I am Here!');
+   console.log(val);
 
-//    const val2 = await p2;
-//    console.log('Hey I am Here!!!!');
-//    console.log(val2);
-//  }
-//  handlePromise();
+   const val2 = await p2;
+   console.log('Hey I am Here!!!!');
+   console.log(val2);
+ }
+ handlePromise();
  //call stack never block, await pauses the async fn not entire js engine, promises are pending while waiting for results
  //if p1 is 5sec and p2 is 10sec then first print p1 and after 10 sec print p2, if p1 10 sec and p2 is 5 sec then p2 is wait for p1 resolve and after that both of them is printed.
 

@@ -1,0 +1,10 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+.container-home{
+  max-width: 120rem;
+  margin: 4vw auto;
+  min-height: 115rem;
+}
