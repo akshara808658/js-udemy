@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+*{
+  box-sizing: border-box;
+}
+body{
+  font-family: 'Ubuntu', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.page{
+width: 100vw;
+height: 100vh;
+}
+.page_1, .page_2{
+  background: url(playstation.webp) no-repeat center center/cover;
+}
+.page_2{
+  background: url(XBox.jpg) no-repeat center center/cover;
+}
